@@ -7,6 +7,9 @@ document.getElementById("reveal-btn").addEventListener("click", function () {
 
   // Ocultar o botão
   this.style.display = "none";
+
+  // Resetar a página após 5 segundos
+  setTimeout(resetPage, 5000);
 });
 
 // Função para lançar confetes
@@ -17,9 +20,17 @@ function launchConfetti() {
     particleCount: 100,
     colors: ["#ff0", "#f00", "#0f0", "#00f"],
   });
+}
 
-  // Remove confetes após 5 segundos (se desejar)
-  setTimeout(() => {
-    // Código adicional aqui, se necessário
-  }, 5000);
+// Função para resetar a página
+function resetPage() {
+  // Ocultar o poster do filme
+  document.getElementById("movie-poster").style.display = "none";
+
+  // Mostrar o botão novamente
+  document.getElementById("reveal-btn").style.display = "inline-block";
+
+  // Remover os confetes (se estiver usando um canvas, você pode redefinir a animação aqui)
+  // Se estiver adicionando confetes manualmente ao DOM, eles podem ser removidos com algo como:
+  confetti.reset(); // Reseta a animação de confetes se o plugin suporta isso
 }
